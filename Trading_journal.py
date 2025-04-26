@@ -96,20 +96,20 @@ else:
             time_filter = st.selectbox("Filter By", ["Weekly", "Monthly", "Quarterly", "Custom Range"])
         
         with col3:
-            if time_filter == "Weekly":
-                selected_week = st.selectbox("Select Week", 
-                    sorted(df["Date"].dt.to_period("W").unique(), reverse=True)
-                filtered_df = df[df["Date"].dt.to_period("W") == selected_week]
-            
-            elif time_filter == "Monthly":
-                selected_month = st.selectbox("Select Month", 
-                    sorted(df["Date"].dt.to_period("M").unique(), reverse=True)
-                filtered_df = df[df["Date"].dt.to_period("M") == selected_month]
-            
-            elif time_filter == "Quarterly":
-                selected_quarter = st.selectbox("Select Quarter", 
-                    sorted(df["Date"].dt.to_period("Q").unique(), reverse=True)
-                filtered_df = df[df["Date"].dt.to_period("Q") == selected_quarter]
+    if time_filter == "Weekly":
+        selected_week = st.selectbox("Select Week", 
+                                   sorted(df["Date"].dt.to_period("W").unique(), reverse=True))
+        filtered_df = df[df["Date"].dt.to_period("W") == selected_week]
+    
+    elif time_filter == "Monthly":
+        selected_month = st.selectbox("Select Month", 
+                                    sorted(df["Date"].dt.to_period("M").unique(), reverse=True))
+        filtered_df = df[df["Date"].dt.to_period("M") == selected_month]
+    
+    elif time_filter == "Quarterly":
+        selected_quarter = st.selectbox("Select Quarter", 
+                                      sorted(df["Date"].dt.to_period("Q").unique(), reverse=True))
+        filtered_df = df[df["Date"].dt.to_period("Q") == selected_quarter
             
             else:  # Custom Range
                 date_range = st.date_input("Select Date Range", 
